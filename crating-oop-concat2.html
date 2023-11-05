@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="table-container"></div>
+
+    <script>
+        let data = [
+            {
+                name: "jay",
+                email: "jay@gmail.com",
+                phone: "12345",
+            },
+            {
+                name: "ajay",
+                email: "ajay@gmail.com",
+                phone: "12345",
+            },
+            {
+                name: "vijay",
+                email: "vijay@gmail.com",
+                phone: "12345",
+            },
+            {
+                name: "ashish",
+                email: "ashish@gmail.com",
+                phone: "12345",
+            },
+        ];
+
+        function a(data) {
+            const table = document.createElement("table");
+            const Row = table.insertRow(0);
+
+            for (let key in data[0]) {
+                const headerCell = Row.insertCell();
+                headerCell.textContent = key;
+                headerCell.style.fontWeight = "bold";
+            }
+
+            data.forEach((item, index) => {
+                const row = table.insertRow();
+                for (let key in item) 
+                {
+                    const cell = row.insertCell();
+                    cell.textContent = item[key];
+                }
+
+                if (index % 2 === 0) 
+                {
+                    row.style.backgroundColor = "#f2f2f2";
+                }
+            });
+
+            return table;
+        }
+
+        const tableContainer = document.getElementById("table-container");
+        tableContainer.appendChild(a(data));
+    </script>
+</body>
+
+</html>
